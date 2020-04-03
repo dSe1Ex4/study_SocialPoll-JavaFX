@@ -21,7 +21,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="More">
           <items>
-            <MenuItem mnemonicParsing="false" text="Stat" />
+            <MenuItem mnemonicParsing="false" text="Stat" onAction="#OnClickStat" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Close" />
           </items>

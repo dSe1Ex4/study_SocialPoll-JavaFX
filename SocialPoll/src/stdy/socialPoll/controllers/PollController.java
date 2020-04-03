@@ -48,7 +48,7 @@ public class PollController {
         for (Person p : persons){
             if (p.equals(sharedPersistence.getCurrentPerson())) continue;
 
-            CheckBox cb = (new CheckBox());
+            CheckBox cb = new CheckBox();
             cb.setText(p.toString());
             checkBoxes.add(cb);
 
@@ -71,7 +71,7 @@ public class PollController {
         }
 
         if (selectedPersons.size() > 3){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ахтунг!");
             alert.setHeaderText(null);
             alert.setContentText("Вы выбрали больше 3 людей!");

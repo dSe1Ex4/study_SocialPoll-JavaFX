@@ -52,11 +52,13 @@ public class AuthController {
         //TODO Сохраняем в базу данных
     }
 
+
+
     @FXML
     private void OnClickContinue(ActionEvent actionEvent) throws IOException {
 
         if (comboxPersons.getValue() == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ахтунг!");
             alert.setHeaderText(null);
             alert.setContentText("Выберите пользователя");
@@ -74,6 +76,19 @@ public class AuthController {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Вопрос");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    @FXML
+    private void OnClickStat(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) comboxPersons.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/uStats.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Статистика");
         stage.setScene(new Scene(root1));
         stage.show();
     }
