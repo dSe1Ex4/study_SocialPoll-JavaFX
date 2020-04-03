@@ -8,6 +8,8 @@ public class Person extends EntityModel {
     private StringProperty nameSecond;
     private StringProperty nameMiddle;
 
+    public Person(){super();}
+
     public Person(StringProperty nameFirst, StringProperty nameSecond, StringProperty nameMiddle) {
         this.nameFirst = nameFirst;
         this.nameSecond = nameSecond;
@@ -18,6 +20,20 @@ public class Person extends EntityModel {
         this.nameFirst = new SimpleStringProperty(nameFirst);
         this.nameSecond = new SimpleStringProperty(nameSecond);
         this.nameMiddle = new SimpleStringProperty(nameMiddle);
+    }
+
+    public Person(int id, String nameFirst, String nameSecond, String nameMiddle) {
+        super(id);
+        this.nameFirst = new SimpleStringProperty(nameFirst);
+        this.nameSecond = new SimpleStringProperty(nameSecond);
+        this.nameMiddle = new SimpleStringProperty(nameMiddle);
+    }
+
+    public Person(int id, StringProperty nameFirst, StringProperty nameSecond, StringProperty nameMiddle) {
+        super(id);
+        this.nameFirst = nameFirst;
+        this.nameSecond = nameSecond;
+        this.nameMiddle = nameMiddle;
     }
 
     public String getNameFirst() {

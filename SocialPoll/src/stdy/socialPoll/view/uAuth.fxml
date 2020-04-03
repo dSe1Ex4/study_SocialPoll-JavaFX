@@ -65,7 +65,7 @@
             <Insets left="10.0" right="10.0" />
          </padding>
          <children>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Продолжить ➟" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <Button alignment="CENTER_RIGHT" onAction="#OnClickContinue" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Продолжить ➟" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Button>
