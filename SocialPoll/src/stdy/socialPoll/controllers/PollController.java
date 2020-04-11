@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import stdy.socialPoll.gateways.PersonGateway;
+import stdy.socialPoll.gateways.RelationGateway;
 import stdy.socialPoll.models.Person;
 import stdy.socialPoll.models.Relation;
 import stdy.socialPoll.models.memory.Question;
@@ -34,6 +35,7 @@ public class PollController {
 
     private SharedPersistence sharedPersistence;
     private PersonGateway personGW = RegGatways.personGateway;
+    private RelationGateway relationGW = RegGatways.relationGateway;
 
     public PollController() {}
 
@@ -82,7 +84,7 @@ public class PollController {
         for (Person person : selectedPersons){
             //TODO Если нет в базе - создаем и добавляем
             Relation relation = new Relation(sharedPersistence.getCurrentPerson(), person, 1);
-            //Save in database
+            relationGW.insert(relation);
         }
 
         nextQuestion();

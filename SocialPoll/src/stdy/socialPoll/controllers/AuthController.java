@@ -32,7 +32,6 @@ public class AuthController {
 
     @FXML
     public void initialize(){
-        personGW.insert(new Person("First", "Second", "Middle"));
         personList = FXCollections.observableArrayList(personGW.all());
         comboxPersons.setItems(personList);
 
