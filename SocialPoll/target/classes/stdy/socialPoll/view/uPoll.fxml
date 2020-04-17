@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stdy.socialPoll.controllers.PollController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="312.0" minHeight="10.0" prefHeight="284.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Text strokeMiterLimit="3.0" fx:id="textQuestion" strokeType="INSIDE" strokeWidth="0.0" text="Вопрос" wrappingWidth="601.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <GridPane prefHeight="33.0" prefWidth="600.0" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.0" minWidth="10.0" prefWidth="419.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="181.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#OnClickContinue" prefHeight="25.0" prefWidth="176.0" text="Следующий вопрос ➠" GridPane.columnIndex="1" />
+            <Label prefHeight="17.0" prefWidth="440.0" fx:id="labelName" text="ФИО" />
+         </children>
+      </GridPane>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" GridPane.rowIndex="1">
+         <content>
+            <VBox prefHeight="248.0" fx:id="vbox" prefWidth="599.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</GridPane>
