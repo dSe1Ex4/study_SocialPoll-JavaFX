@@ -10,20 +10,17 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import stdy.socialPoll.gateways.PersonGateway;
 import stdy.socialPoll.gateways.RelationGateway;
 import stdy.socialPoll.models.Person;
 import stdy.socialPoll.models.Relation;
-import stdy.socialPoll.models.memory.Question;
+import stdy.socialPoll.models.Question;
 import stdy.socialPoll.registry.RegGatways;
 import stdy.socialPoll.registry.SharedPersistence;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PollController {
     @FXML private VBox vbox;
@@ -91,7 +88,7 @@ public class PollController {
     }
 
     private void nextQuestion() throws IOException {
-        Question question = Question.getNextQuestion();
+        Question question = sharedPersistence.getNextQuestion();
 
         if (question == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
