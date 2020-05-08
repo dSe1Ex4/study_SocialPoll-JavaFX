@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IGateway<T extends EntityModel> {
     List<T> all();
-    T find(int id) throws EntityNotFound;
+    T find(Long id) throws EntityNotFound;
     void insert(T object);
     void update(T object) throws EntityNotFound;
-    void delete(int id);
+    void delete(T obj);
 }

@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import stdy.socialPoll.models.Person;
 import stdy.socialPoll.models.Relation;
-import stdy.socialPoll.registry.RegGatways;
+import stdy.socialPoll.registry.RegGateways;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,10 +34,10 @@ public class StatsController {
     @FXML
     private void initialize(){
         //TODO для каждой связи из базы данных
-        relations = (ArrayList<Relation>) RegGatways.relationGateway.all();
+        relations = (ArrayList<Relation>) RegGateways.relationGateway.all();
 
         elections = new HashMap<>();
-        persons = (ArrayList<Person>) RegGatways.personGateway.all();
+        persons = (ArrayList<Person>) RegGateways.personGateway.all();
 
         for(Person person : persons){
             elections.put(person, 0);
@@ -45,7 +45,7 @@ public class StatsController {
 
         for(Person person : persons) {
             for (Relation rel : relations) {
-                if (rel.getReceivePerson().equals(person)){//Сравнивать по id на готовой базе
+                if (rel.getReceivePerson().getId() == person.getId()){//Сравнивать по id на готовой базе
                     Integer val = elections.getOrDefault(person, 0);
                     elections.put(person, ++val);
                 }
@@ -109,7 +109,7 @@ public class StatsController {
         //Close current
         Stage stage = (Stage) vbox_leader.getScene().getWindow();
         stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/uAuth.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/view/uAuth.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
         stage.setTitle("SocialPoll");

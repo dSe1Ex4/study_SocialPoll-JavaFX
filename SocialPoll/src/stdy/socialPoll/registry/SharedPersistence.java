@@ -1,6 +1,5 @@
 package stdy.socialPoll.registry;
 
-import stdy.socialPoll.gateways.QuestionGateway;
 import stdy.socialPoll.models.Person;
 import stdy.socialPoll.models.Question;
 
@@ -12,7 +11,7 @@ public class SharedPersistence {
 
     private Person currentPerson;
 
-    private Iterator<Question> iterator = RegGatways.questionGateway.all().iterator();
+    private Iterator<Question> iterator = RegGateways.questionGateway.all().iterator();
 
     public Question getNextQuestion(){
         if (iterator.hasNext()){

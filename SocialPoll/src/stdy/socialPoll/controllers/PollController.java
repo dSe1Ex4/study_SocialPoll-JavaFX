@@ -16,7 +16,7 @@ import stdy.socialPoll.gateways.RelationGateway;
 import stdy.socialPoll.models.Person;
 import stdy.socialPoll.models.Relation;
 import stdy.socialPoll.models.Question;
-import stdy.socialPoll.registry.RegGatways;
+import stdy.socialPoll.registry.RegGateways;
 import stdy.socialPoll.registry.SharedPersistence;
 
 import java.io.IOException;
@@ -31,8 +31,8 @@ public class PollController {
     private ArrayList<Person> persons;
 
     private SharedPersistence sharedPersistence;
-    private PersonGateway personGW = RegGatways.personGateway;
-    private RelationGateway relationGW = RegGatways.relationGateway;
+    private PersonGateway personGW = RegGateways.personGateway;
+    private RelationGateway relationGW = RegGateways.relationGateway;
 
     public PollController() {}
 
@@ -79,8 +79,8 @@ public class PollController {
         }
 
         for (Person person : selectedPersons){
-            //TODO Если нет в базе - создаем и добавляем
             Relation relation = new Relation(sharedPersistence.getCurrentPerson(), person, 1);
+
             relationGW.insert(relation);
         }
 
@@ -107,7 +107,7 @@ public class PollController {
         //Close current
         Stage stage = (Stage) vbox.getScene().getWindow();
         stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/uAuth.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/view/uAuth.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
         stage.setTitle("SocialPoll");

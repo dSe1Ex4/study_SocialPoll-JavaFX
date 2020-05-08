@@ -4,39 +4,46 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Relation extends EntityModel {
-    private Person firstPerson;
-    private Person receivePerson;
-    private IntegerProperty relationValue;
+import javax.persistence.*;
 
-    public Relation(){super();}
+@Entity
+@Access(AccessType.PROPERTY)
+public class Relation implements EntityModel {
+/*    @Id @GeneratedValue*/
+    private long id;
+
+/*    @OneToOne(targetEntity=Person.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="first_person_id")*/
+    private Person firstPerson;
+
+/*    @OneToOne(targetEntity=Person.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="receive_person_id")*/
+    private Person receivePerson;
+
+    public Relation(){}
 
     public Relation(Person firstPerson, Person receivePerson, IntegerProperty relationValue) {
         this.firstPerson = firstPerson;
         this.receivePerson = receivePerson;
-        this.relationValue = relationValue;
     }
 
     public Relation(Person firstPerson, Person receivePerson, Integer relationValue) {
         this.firstPerson = firstPerson;
         this.receivePerson = receivePerson;
-        this.relationValue = new SimpleIntegerProperty(relationValue);
     }
 
-    public Relation(int id, Person firstPerson, Person receivePerson, Integer relationValue) {
-        super(id);
+    public Relation(long id, Person firstPerson, Person receivePerson, Integer relationValue) {
         this.firstPerson = firstPerson;
         this.receivePerson = receivePerson;
-        this.relationValue = new SimpleIntegerProperty(relationValue);
     }
 
-    public Relation(int id, Person firstPerson, Person receivePerson, IntegerProperty relationValue) {
-        super(id);
+    public Relation(long id, Person firstPerson, Person receivePerson, IntegerProperty relationValue) {
         this.firstPerson = firstPerson;
         this.receivePerson = receivePerson;
-        this.relationValue = relationValue;
     }
 
+    @OneToOne(targetEntity=Person.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name="first_person_id")
     public Person getFirstPerson() {
         return firstPerson;
     }
@@ -45,6 +52,8 @@ public class Relation extends EntityModel {
         this.firstPerson = firstPerson;
     }
 
+    @OneToOne(targetEntity=Person.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name="receive_person_id")
     public Person getReceivePerson() {
         return receivePerson;
     }
@@ -53,24 +62,18 @@ public class Relation extends EntityModel {
         this.receivePerson = receivePerson;
     }
 
-    public int getRelationValue() {
-        return relationValue.get();
-    }
-
-    public IntegerProperty relationValueProperty() {
-        return relationValue;
-    }
-
-    public void setRelationValue(int relationValue) {
-        this.relationValue.set(relationValue);
-    }
-
     @Override
     public String toString() {
-        return String.format("%s -> %s = %d",
+        return String.format("%s -> %s",
                 firstPerson.getNameFirst()+" "+firstPerson.getNameSecond(),
-                receivePerson.getNameFirst()+" "+receivePerson.getNameSecond(),
-                relationValue.getValue()
+                receivePerson.getNameFirst()+" "+receivePerson.getNameSecond()
         );
     }
+
+    @Id @GeneratedValue
+    @Override
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) { this.id = id; }
 }

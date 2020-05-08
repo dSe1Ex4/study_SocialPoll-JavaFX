@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/uAuth.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/uAuth.fxml"));
         primaryStage.setTitle("Social Poll");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

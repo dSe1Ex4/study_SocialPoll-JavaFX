@@ -3,12 +3,18 @@ package stdy.socialPoll.models;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Person extends EntityModel {
-    private StringProperty nameFirst;
-    private StringProperty nameSecond;
-    private StringProperty nameMiddle;
+import javax.persistence.*;
 
-    public Person(){super();}
+@Entity
+@Access(AccessType.PROPERTY)
+public class Person implements EntityModel{
+    /*@Id @GeneratedValue*/
+    private long id;
+    private StringProperty nameFirst = new SimpleStringProperty();
+    private StringProperty nameSecond = new SimpleStringProperty();
+    private StringProperty nameMiddle = new SimpleStringProperty();
+
+    public Person(){}
 
     public Person(StringProperty nameFirst, StringProperty nameSecond, StringProperty nameMiddle) {
         this.nameFirst = nameFirst;
@@ -23,14 +29,12 @@ public class Person extends EntityModel {
     }
 
     public Person(int id, String nameFirst, String nameSecond, String nameMiddle) {
-        super(id);
         this.nameFirst = new SimpleStringProperty(nameFirst);
         this.nameSecond = new SimpleStringProperty(nameSecond);
         this.nameMiddle = new SimpleStringProperty(nameMiddle);
     }
 
     public Person(int id, StringProperty nameFirst, StringProperty nameSecond, StringProperty nameMiddle) {
-        super(id);
         this.nameFirst = nameFirst;
         this.nameSecond = nameSecond;
         this.nameMiddle = nameMiddle;
@@ -40,6 +44,7 @@ public class Person extends EntityModel {
         return nameFirst.get();
     }
 
+    @Transient
     public StringProperty nameFirstProperty() {
         return nameFirst;
     }
@@ -52,6 +57,7 @@ public class Person extends EntityModel {
         return nameSecond.get();
     }
 
+    @Transient
     public StringProperty nameSecondProperty() {
         return nameSecond;
     }
@@ -64,6 +70,7 @@ public class Person extends EntityModel {
         return nameMiddle.get();
     }
 
+    @Transient
     public StringProperty nameMiddleProperty() {
         return nameMiddle;
     }
@@ -76,4 +83,12 @@ public class Person extends EntityModel {
     public String toString() {
         return getNameFirst()+" "+getNameSecond()+" "+getNameMiddle();
     }
+
+    @Id @GeneratedValue
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) { this.id = id; }
 }
